@@ -21,19 +21,12 @@ class Header extends React.Component {
     return (
       <div>
         <Nav tabs>
+
           <NavItem>
-            <NavLink href="/project/add" active>Link</NavLink>
-          </NavItem>
-          <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-            <DropdownToggle nav caret>
-              Dropdown
-            </DropdownToggle>
-          </Dropdown>
-          <NavItem>
-            <NavLink href="#">Link</NavLink>
+            <NavLink href="/dashboard" >DashBoard</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#">Another Link</NavLink>
+            <NavLink href="/project/add" >Add</NavLink>
           </NavItem>
 
         </Nav>

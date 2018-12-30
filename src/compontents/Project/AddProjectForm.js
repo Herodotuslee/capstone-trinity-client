@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-// import PropTypes from "prop-types"
 import { connect } from 'react-redux';
 import { createProject } from "../../Redux/actions/projectActions"
+import { withRouter } from "react-router-dom";
 class AddProjectForm extends React.Component {
   state = {
     projectName: "",
@@ -14,26 +14,11 @@ class AddProjectForm extends React.Component {
     updated_At: ""
   }
 
-
-
   onChangeHandler = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
-
-
-  // onSubmitHandler = e => {
-  //   e.preventDefault();
-  //   const newProject = {
-  //     projectName: this.state.projectName,
-  //     projectIdentifier: this.state.projectIdentifier,
-  //     description: this.state.description,
-  //     start_date: this.state.start_date,
-  //     end_date: this.end_date
-  //   }
-  //   this.props.createProject(newProject, this.props.histroy)
-  // }
 
 
   onSubmitHandler = e => {
@@ -45,8 +30,8 @@ class AddProjectForm extends React.Component {
         description: "",
         start_date: "",
         end_date: ""
-      });
-    });
+      })
+    }); this.props.history.push("/dashboard");
   };
 
 
@@ -129,18 +114,15 @@ class AddProjectForm extends React.Component {
   }
 }
 
-// AddProjectForm.PropTypes = {
-//   createProject: PropTypes.func.isRequired
-// }
-// export default connect(null, { createProject })(C);
-
-// export default AddProjectForm
 
 const mapDispatchToProps = {
   createProject
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(AddProjectForm);
+
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(AddProjectForm)
+);

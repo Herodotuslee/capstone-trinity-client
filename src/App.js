@@ -21,12 +21,10 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header></Header>
-
             <Switch>
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/project/add" component={AddProjectForm} />
             </Switch>
-
           </div>
         </BrowserRouter>
       </Provider>

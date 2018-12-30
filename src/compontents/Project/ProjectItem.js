@@ -6,10 +6,10 @@ class ProjectItem extends Component {
       <div>
         <p>Project Item</p>
 
+        <td>{this.props.project.id}</td>
+
       </div>
     )
   }
 }
-
-
 export default ProjectItem 
