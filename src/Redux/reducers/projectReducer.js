@@ -1,16 +1,22 @@
-import { ADD_EXPENSE_SUCCESS, ADD_EXPENSE_FAILED, FETCH_EXPENSE_SUCCESS, FETCH_EXPENSE_FAILED } from "../actions/projectActions";
+import { ADD_PROJECT_SUCCESS, ADD_PROJECT_FAILED, FETCH_PROJECT_SUCCESS, FETCH_PROJECT_FAILED, GET_PROJECT } from "../actions/projectActions";
 
 export default function (state = [], action) {
   switch (action.type) {
 
-    case ADD_EXPENSE_SUCCESS:
+    case ADD_PROJECT_SUCCESS:
       return [...state, action.payload];
-    case ADD_EXPENSE_FAILED:
+    case ADD_PROJECT_FAILED:
       return state;
-    case FETCH_EXPENSE_SUCCESS:
+    case FETCH_PROJECT_SUCCESS:
       return action.payload;
-    case FETCH_EXPENSE_FAILED:
+    case FETCH_PROJECT_FAILED:
       return action.payload;
+    case GET_PROJECT:
+      return [
+        ...state,
+        action.payload
+      ];
+
 
     default:
       return state;

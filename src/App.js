@@ -11,6 +11,7 @@ import AddProjectForm from "./compontents/Project/AddProjectForm";
 
 import logger from "redux-logger";
 import thunkMiddleware from "redux-thunk";
+import UpdateProjectForm from "./compontents/Project/UpdateProjectForm";
 const middleware = [logger, thunkMiddleware];
 const store = createStore(reducers, applyMiddleware(...middleware));
 
@@ -24,6 +25,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/project/add" component={AddProjectForm} />
+              <Route exact path="/project/update/:id" component={UpdateProjectForm} />
             </Switch>
           </div>
         </BrowserRouter>

@@ -6,21 +6,25 @@ import { fetchProjects } from "../Redux/actions/projectActions"
 class Dashboard extends Component {
 
   componentDidMount() {
+    console.log('this.props', this.props)
     this.props.fetchProjects();
   }
-  // renderList() {
-  //   return this.props.projects.map(project => {
-  //     return (
-  //       {/* <ProjectItem project={project}></ProjectItem> */ }
 
-  //     );
-  //   });
-  // }
 
+
+  renderList() {
+    return this.props.projects.map(project => {
+      return (
+        <ProjectItem key={project.id} project={project}></ProjectItem>
+
+      );
+    });
+  }
 
 
   render() {
-    console.log('hi', this.props)
+    // const { projects } = this.props.projects;
+    console.log('hi2project', this.props.project)
     if (!this.props.projects) {
       return <div>Loading</div>
 
@@ -31,7 +35,7 @@ class Dashboard extends Component {
           <CreateProjectButton></CreateProjectButton>
           {/* <ProjectItem></ProjectItem> */}
 
-          {/* <div>{this.renderList()}</div> */}
+          <div>{this.renderList()}</div>
           <p>Dashboard</p>
         </div>
       )
@@ -44,7 +48,7 @@ class Dashboard extends Component {
 
 
 const mapStateTopProjects = state => ({
-  projects: state.projects.fetchProjects
+  projects: state.projects
 })
 const mapDispatchToProps = {
   fetchProjects
