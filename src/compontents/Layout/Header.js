@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, NavItem, Dropdown, DropdownToggle, NavLink } from 'reactstrap';
+import { Nav, NavItem, NavLink } from 'reactstrap';
 
 class Header extends React.Component {
   constructor(props) {

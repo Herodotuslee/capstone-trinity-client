@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import { createProject, getProject } from "../../Redux/actions/projectActions"
@@ -35,16 +35,26 @@ class UpdateProjectForm extends Component {
     }); this.props.history.push("/dashboard");
   };
 
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    this.props.getProject(id, this.props.history);
-  }
+  // componentDidMount() {
+  //   const { id } = this.props.match.params;
+  //   this.props.getProject(id, this.props.history);
+  // }
 
+  // componentDidMount() {
+  //   this.setState({ ...this.props.project });
+  // }
+
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.project && this.state.id !== this.props.project.id) {
+  //     this.setState({ ...this.props.project });
+  //   }
+  // }
 
 
   render() {
     console.log('this.props', this.props)
-    return (
+    return (<Container>
+
       <Form onSubmit={this.onSubmitHandler}>
         <FormGroup>
           <Label for="projectName">Project Name</Label>
@@ -54,7 +64,7 @@ class UpdateProjectForm extends Component {
             id="projectName"
             placeholder="Input the amount"
             onChange={this.onChangeHandler}
-            value={this.props.projectName}
+            value={this.state.projectName}
           />
         </FormGroup>
 
@@ -116,9 +126,10 @@ class UpdateProjectForm extends Component {
             marginRight: `3em`
           }}
         >
-          ADD
+          UPDATE
           </Button>
       </Form>
+    </Container>
     )
   }
 }
@@ -128,7 +139,7 @@ const mapDispatchToProps = {
 
 
 const mapStateToProps = state => ({
-  project: state.projects.project
+  project: state.project.project,
 });
 
 export default connect(

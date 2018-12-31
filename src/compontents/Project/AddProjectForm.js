@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
 import { connect } from 'react-redux';
 import { createProject } from "../../Redux/actions/projectActions"
 import { withRouter } from "react-router-dom";
@@ -37,7 +37,7 @@ class AddProjectForm extends React.Component {
 
   render() {
     return (
-      <Form onSubmit={this.onSubmitHandler}>
+      <Container><Form onSubmit={this.onSubmitHandler}>
         <FormGroup>
           <Label for="projectName">Project Name</Label>
           <Input
@@ -109,7 +109,8 @@ class AddProjectForm extends React.Component {
         >
           ADD
           </Button>
-      </Form>
+      </Form></Container>
+
     );
   }
 }

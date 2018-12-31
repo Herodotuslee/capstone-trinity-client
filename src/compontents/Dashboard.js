@@ -3,6 +3,7 @@ import ProjectItem from './Project/ProjectItem';
 import CreateProjectButton from './Project/CreateProjectButton';
 import { connect } from "react-redux";
 import { fetchProjects } from "../Redux/actions/projectActions"
+import { Container } from 'reactstrap';
 class Dashboard extends Component {
 
   componentDidMount() {
@@ -10,52 +11,44 @@ class Dashboard extends Component {
     this.props.fetchProjects();
   }
 
-
-
   renderList() {
-    return this.props.projects.map(project => {
+    return this.props.project.projects.map(project => {
       return (
         <ProjectItem key={project.id} project={project}></ProjectItem>
-
       );
     });
   }
 
 
   render() {
-    // const { projects } = this.props.projects;
-    console.log('hi2project', this.props.project)
-    if (!this.props.projects) {
+    console.log('this.props', this.props.project.projects)
+    if (!this.props.project.projects) {
       return <div>Loading</div>
-
     } else {
       console.log('props', this.props)
       return (
-        <div>
+        <Container>
+          <br></br>
           <CreateProjectButton></CreateProjectButton>
-          {/* <ProjectItem></ProjectItem> */}
-
+          <br></br>
           <div>{this.renderList()}</div>
-          <p>Dashboard</p>
-        </div>
+        </Container>
       )
     }
-
   }
 }
 
 
+const mapStateToProps = state => ({
+  project: state.project
+});
 
-
-const mapStateTopProjects = state => ({
-  projects: state.projects
-})
 const mapDispatchToProps = {
   fetchProjects
 }
 
 export default
   connect(
-    mapStateTopProjects,
+    mapStateToProps,
     mapDispatchToProps
   )(Dashboard);

@@ -4,7 +4,7 @@ class CreateProjectButton extends Component {
   render() {
     return (
       <div>
-        <Button color="danger">Add Project</Button>
+        <Button color="danger">New Project</Button>
       </div>
     )
   }

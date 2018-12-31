@@ -1,23 +1,36 @@
-import { ADD_PROJECT_SUCCESS, ADD_PROJECT_FAILED, FETCH_PROJECT_SUCCESS, FETCH_PROJECT_FAILED, GET_PROJECT } from "../actions/projectActions";
+import { GET_PROJECT, DELETE_PROJECT, FETCH_PROJECTS_SUCCESS, ADD_PROJECT_SUCCESS } from "../actions/types";
 
-export default function (state = [], action) {
+
+
+const initialState = {
+  projects: [],
+  project: {}
+};
+
+export default function (state = initialState, action) {
   switch (action.type) {
-
-    case ADD_PROJECT_SUCCESS:
-      return [...state, action.payload];
-    case ADD_PROJECT_FAILED:
-      return state;
-    case FETCH_PROJECT_SUCCESS:
-      return action.payload;
-    case FETCH_PROJECT_FAILED:
-      return action.payload;
-    case GET_PROJECT:
-      return [
+    case FETCH_PROJECTS_SUCCESS:
+      return {
         ...state,
-        action.payload
-      ];
-
-
+        projects: action.payload
+      };
+    case ADD_PROJECT_SUCCESS:
+      return {
+        ...state,
+        project: action.payload
+      };
+    case DELETE_PROJECT:
+      return {
+        ...state,
+        projects: state.projects.filter(
+          project => project.projectIdentifier !== action.payload
+        )
+      };
+    case GET_PROJECT:
+      return {
+        ...state,
+        project: action.payload
+      };
     default:
       return state;
   }
