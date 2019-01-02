@@ -6,7 +6,7 @@ import { fetchProjects } from "../Redux/actions/projectActions"
 import { Container } from 'reactstrap';
 class Dashboard extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     console.log('this.props', this.props)
     this.props.fetchProjects();
   }
@@ -17,6 +17,10 @@ class Dashboard extends Component {
         <ProjectItem key={project.id} project={project}></ProjectItem>
       );
     });
+  }
+  componentDidUpdate(prevProps) {
+    console.log("PREV PROPS ARE", prevProps);
+    console.log("CURRENT PROPS", this.props);
   }
 
 

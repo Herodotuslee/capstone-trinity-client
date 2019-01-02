@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { createProject } from "../../Redux/actions/projectActions"
 import { withRouter } from "react-router-dom";
 class AddProjectForm extends React.Component {
+
+
+
   state = {
     projectName: "",
     projectIdentifier: "",
@@ -13,6 +16,7 @@ class AddProjectForm extends React.Component {
     created_At: "",
     updated_At: ""
   }
+
 
   onChangeHandler = e => {
     this.setState({
@@ -31,8 +35,10 @@ class AddProjectForm extends React.Component {
         start_date: "",
         end_date: ""
       })
-    }); this.props.history.push("/dashboard");
+      this.props.history.push("/dashboard")
+    });
   };
+
 
 
   render() {

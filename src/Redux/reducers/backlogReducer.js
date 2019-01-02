@@ -12,7 +12,6 @@ export default function (state = initialState, action) {
         ...state,
         project_tasks: action.payload
       };
-
     case GET_PROJECT_TASK:
       return {
         ...state,

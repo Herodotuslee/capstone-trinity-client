@@ -23,6 +23,7 @@ export const createProject = project => dispatch => {
   return axios
     .post("http://localhost:8080/api/project", project)
     .then(response => {
+      console.log('response', response.data)
       dispatch({
         type: ADD_PROJECT_SUCCESS,
         payload: response.data

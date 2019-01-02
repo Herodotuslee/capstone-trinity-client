@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
-import { addProjectTask } from '../../Redux/actions/blacklogActions';
-import { Button, Container } from 'reactstrap';
+import { connect } from 'react-redux';
+
+import { Container } from 'reactstrap';
+import { Link } from 'react-router-dom';
+
+
 import ProcessBox from './ProcessBox';
+
 class ProjectBoard extends Component {
   render() {
     return (
       <Container>
         <br />
-        <Button>Add Project Task</Button>
+        <Link to={`/projectBoard/${this.props.match.params.id}/add`} className=" btn btn-lg ">Create a  Task</Link>
         <br />
-        <ProcessBox />
-
+        <ProcessBox project_ID={`${this.props.match.params.id}`} />
       </Container>
 
 
@@ -19,5 +23,18 @@ class ProjectBoard extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  project: state.project
+});
 
-export default ProjectBoard
+const mapDispatchToProps = {
+
+
+
+}
+
+export default
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ProjectBoard)

@@ -17,7 +17,7 @@ export default function (state = initialState, action) {
     case ADD_PROJECT_SUCCESS:
       return {
         ...state,
-        project: action.payload
+        projects: [...state.projects, action.payload]
       };
     case DELETE_PROJECT:
       return {

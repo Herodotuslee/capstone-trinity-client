@@ -6,7 +6,7 @@ import { createProject, getProject } from "../../Redux/actions/projectActions"
 class UpdateProjectForm extends Component {
 
   state = {
-    projectName: "ddd",
+    projectName: "",
     projectIdentifier: "",
     description: "",
     start_date: "",
@@ -37,9 +37,11 @@ class UpdateProjectForm extends Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
-    this.props.getProject(id, this.props.history);
+    const id = this.props.match.params.id;
+    this.props.getProject(id);
   }
+
+
 
 
   onChangeHandler = e => {
@@ -47,6 +49,7 @@ class UpdateProjectForm extends Component {
       [e.target.name]: e.target.value
     });
   };
+
 
 
   onSubmitHandler = e => {
@@ -59,8 +62,11 @@ class UpdateProjectForm extends Component {
         start_date: "",
         end_date: ""
       })
-    }); this.props.history.push("/dashboard");
+      this.props.history.push("/dashboard")
+    });
   };
+
+
 
   // componentDidMount() {
   //   const { id } = this.props.match.params;
