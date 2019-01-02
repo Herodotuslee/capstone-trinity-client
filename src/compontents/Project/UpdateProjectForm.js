@@ -6,7 +6,7 @@ import { createProject, getProject } from "../../Redux/actions/projectActions"
 class UpdateProjectForm extends Component {
 
   state = {
-    projectName: "",
+    projectName: "ddd",
     projectIdentifier: "",
     description: "",
     start_date: "",
@@ -14,6 +14,33 @@ class UpdateProjectForm extends Component {
     created_At: "",
     updated_At: ""
   }
+
+  componentWillReceiveProps(nextProps) {
+
+    const {
+      id,
+      projectName,
+      projectIdentifier,
+      description,
+      start_date,
+      end_date
+    } = nextProps.project;
+
+    this.setState({
+      id,
+      projectName,
+      projectIdentifier,
+      description,
+      start_date,
+      end_date
+    });
+  }
+
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    this.props.getProject(id, this.props.history);
+  }
+
 
   onChangeHandler = e => {
     this.setState({
@@ -40,8 +67,10 @@ class UpdateProjectForm extends Component {
   //   this.props.getProject(id, this.props.history);
   // }
 
-  // componentDidMount() {
-  //   this.setState({ ...this.props.project });
+  // componentWillUpdate() {
+  //   this.props.getProject(this.props.match.params.id)
+  //   console.log('this.props.project', this.props.project)
+  //   this.setState({ ...this.props.project.project });
   // }
 
   // componentDidUpdate(prevProps) {
@@ -94,30 +123,24 @@ class UpdateProjectForm extends Component {
         </FormGroup>
 
         <FormGroup>
-          <Label for="start_date">start_date</Label>
-          <Input
-            type="text"
+          <input
+            type="date"
+            className="form-control form-control-lg"
             name="start_date"
-            id="start_date"
-            placeholder="Input the start_date"
-            onChange={this.onChangeHandler}
             value={this.state.start_date}
+            onChange={this.onChangeHandler}
           />
         </FormGroup>
 
         <FormGroup>
-          <Label for="end_date">end_date</Label>
-          <Input
-            type="text"
+          <input
+            type="date"
+            className="form-control form-control-lg"
             name="end_date"
-            id="end_date"
-            placeholder="Input the end_date"
-            onChange={this.onChangeHandler}
             value={this.state.end_date}
+            onChange={this.onChangeHandler}
           />
         </FormGroup>
-
-
         <Button
           type="submit"
           color="primary"

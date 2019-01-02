@@ -75,29 +75,24 @@ class AddProjectForm extends React.Component {
         </FormGroup>
 
         <FormGroup>
-          <Label for="start_date">start_date</Label>
-          <Input
-            type="text"
+          <input
+            type="date"
+            className="form-control form-control-lg"
             name="start_date"
-            id="start_date"
-            placeholder="Input the start_date"
-            onChange={this.onChangeHandler}
             value={this.state.start_date}
+            onChange={this.onChangeHandler}
           />
         </FormGroup>
 
         <FormGroup>
-          <Label for="end_date">end_date</Label>
-          <Input
-            type="text"
+          <input
+            type="date"
+            className="form-control form-control-lg"
             name="end_date"
-            id="end_date"
-            placeholder="Input the end_date"
-            onChange={this.onChangeHandler}
             value={this.state.end_date}
+            onChange={this.onChangeHandler}
           />
         </FormGroup>
-
 
         <Button
           type="submit"

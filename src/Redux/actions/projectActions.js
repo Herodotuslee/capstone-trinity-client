@@ -1,6 +1,6 @@
 
 import axios from "axios";
-import { GET_PROJECT, DELETE_PROJECT, FETCH_PROJECTS_SUCCESS, FETCH_PROJECTS_FAILED, ADD_PROJECT_SUCCESS, ADD_PROJECT_FAILED } from "./types";
+import { GET_PROJECT, DELETE_PROJECT, FETCH_PROJECTS_SUCCESS, FETCH_PROJECTS_FAILED, ADD_PROJECT_SUCCESS, ADD_PROJECT_FAILED, FETCH_PROJECT_FAILED } from "./types";
 
 // export const createProject = (project, history) => async dispatch => {
 //   try {
@@ -57,18 +57,20 @@ export const deleteProject = id => dispatch => {
 };
 
 
-
-export const getProject = (id, history) => async dispatch => {
-  try {
-    const res = await axios.get(`http://localhost:8080/api/project/${id}`);
-    dispatch({
-      type: GET_PROJECT,
-      payload: res.data
-    });
-  } catch (error) {
-    history.push("/dashboard");
-  }
+export const getProject = (id) => dispatch => {
+  axios
+    .get(`http://localhost:8080/api/project/${id}`)
+    .then(response => {
+      return dispatch({
+        type: GET_PROJECT,
+        payload: response.data
+      });
+    }).catch(err => dispatch({ type: FETCH_PROJECT_FAILED, payload: err }));
 };
+
+
+
+
 
 // import axios from "axios";
 
