@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { deleteProject } from '../../Redux/actions/projectActions'
+import { deleteProject } from '../../Redux/actions/projectActions';
+import "../ProjectBoard/ProjectTask/color.css"
 import {
   Button, Card, CardText, CardBody,
   CardTitle, CardSubtitle, Row, Col
@@ -9,26 +10,30 @@ import {
 
 // import { deleteExpense } from "../../Redux/actions/projectActions";
 class ProjectItem extends Component {
+
+
   render() {
+
     return (
       <Card>
         <CardBody>
-          <CardTitle>{this.props.project.projectName}</CardTitle>
-          <CardSubtitle>{this.props.project.projectIdentifier}</CardSubtitle>
-          <CardText>{this.props.project.description}</CardText>
           <Row>
-            <Col xs="4"><Link to={`/project/update/${this.props.project.projectIdentifier}`}>
-              <Button>Update</Button></Link></Col>
-            <Col xs="4"><Button
-              color="danger"
-              onClick={() => this.props.deleteProject(this.props.project.projectIdentifier)}
-            >Delete
-          </Button></Col>
-            <Col xs="4"> <Link to={`/projectBoard/${this.props.project.projectIdentifier}`}>
-              <li className="list-group-item board">
-                <i className="fa fa-flag-checkered pr-1"> Project Board </i>
+            <Col xs="8"> <CardTitle>{this.props.project.projectName}</CardTitle>
+              <CardSubtitle>{this.props.project.projectIdentifier}</CardSubtitle>
+              <CardText>{this.props.project.description}</CardText></Col>
+            <Col xs="4">
+              <li className="list-group-item board"><Link to={`/projectBoard/${this.props.project.projectIdentifier}`}>
+                <i className="fas fa-tasks"> Project Tasks </i>
+              </Link>
               </li>
-            </Link></Col>
+              <li className="list-group-item board">
+                <Link to={`/project/update/${this.props.project.projectIdentifier}`}>
+                  <i className="far fa-edit pr-1"> Edit</i></Link>
+              </li>
+              <li className="list-group-item board" onClick={() => this.props.deleteProject(this.props.project.projectIdentifier)}>
+                <i className="far fa-trash-alt  pr-1 pointer"> Delete</i>
+              </li>
+            </Col>
           </Row>
         </CardBody>
       </Card>

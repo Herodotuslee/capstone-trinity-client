@@ -6,7 +6,7 @@ class CreateProjectButton extends Component {
     return (
       <div>
         <Link to="/project/add" className=" btn btn-lg ">
-          Create a Project
+          <i className="fas fa-plus"></i>Create a Project
       </Link>
       </div>
     )

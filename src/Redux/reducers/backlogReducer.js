@@ -1,4 +1,4 @@
-import { GET_BACKLOG, GET_PROJECT_TASK, DELETE_PROJECT_TASK } from "../actions/types";
+import { GET_BACKLOG, GET_PROJECT_TASK, DELETE_PROJECT_TASK, DELETE_TASK_SUCCESS, FETCH_ALLPROJECT_TASKS_SUCCESS } from "../actions/types";
 
 const initialState = {
   project_tasks: [],
@@ -18,13 +18,20 @@ export default function (state = initialState, action) {
         project_task: action.payload
       };
 
-    case DELETE_PROJECT_TASK:
+    case DELETE_TASK_SUCCESS:
+      console.log('state', state)
       return {
-        ...state
-
-        // TO_DO
+        ...state,
+        project_tasks: state.project_tasks.filter(
+          item => item.id !== action.payload
+        )
       };
 
+    case FETCH_ALLPROJECT_TASKS_SUCCESS:
+      return {
+        ...state,
+        project_tasks: action.payload
+      };
     default:
       return state;
   }

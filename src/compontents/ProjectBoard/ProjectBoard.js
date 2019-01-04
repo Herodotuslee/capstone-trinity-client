@@ -9,11 +9,15 @@ import ProcessBox from './ProcessBox';
 
 class ProjectBoard extends Component {
   render() {
+
+
     return (
       <Container>
         <br />
-        <Link to={`/projectBoard/${this.props.match.params.id}/add`} className=" btn btn-lg ">Create a  Task</Link>
+        <Link to={"/dashboard"} className=" btn btn-lg "><i className="fas fa-long-arrow-alt-left"></i>Back </Link>
         <br />
+        <Link to={`/projectBoard/${this.props.match.params.id}/add`} className=" btn btn-lg "><i className="fas fa-plus"></i>Create a  Task in Project {this.props.project.projectName}</Link>
+
         <ProcessBox project_ID={`${this.props.match.params.id}`} />
       </Container>
 

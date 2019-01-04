@@ -7,18 +7,15 @@ import {
   DELETE_PROJECT_TASK,
   ADD_TASK_SUCCESS,
   ADD_TASK_FAILED,
+  DELETE_TASK_SUCCESS,
+  DELETE_TASK_FAILED,
+  FETCH_ALLPROJECT_TASKS_SUCCESS,
+  FETCH_ALLPROJECT_TASKS_FAILED
 } from "./types";
 
 
 
-// export const addProjectTask = (
-//   backlog_id,
-//   project_task,
-//   history
-// ) => async dispatch => {
-//   await axios.post(`/api/backlog/${backlog_id}`, project_task);
-//   history.push(`/projectBoard/${backlog_id}`);
-// };
+
 
 
 export const addProjectTask = (backlog_id, project_task) => dispatch => {
@@ -52,4 +49,39 @@ export const getBacklog = backlog_id => async dispatch => {
       payload: err.response.data
     });
   }
+};
+
+
+export const deleteProjectTask = (backlog_id, pt_id) => dispatch => {
+  axios.delete(`http://localhost:8080/api/backlog/${backlog_id}/${pt_id}`);
+  dispatch({
+    type: DELETE_TASK_SUCCESS,
+    payload: pt_id
+  });
+
+};
+
+export const getProjectTask = (
+  backlog_id,
+  pt_id,
+) => async dispatch => {
+
+  const res = await axios.get(`http://localhost:8080/api/backlog/${backlog_id}/${pt_id}`);
+  dispatch({
+    type: GET_PROJECT_TASK,
+    payload: res.data
+  });
+}
+
+
+export const fetchAllProjectTasks = () => dispatch => {
+  axios
+    .get("http://localhost:8080/api/backlog/all")
+    .then(response => {
+      return dispatch({
+        type: FETCH_ALLPROJECT_TASKS_SUCCESS,
+        payload: response.data
+      });
+    })
+    .catch(err => dispatch({ type: FETCH_ALLPROJECT_TASKS_FAILED, payload: err }));
 };

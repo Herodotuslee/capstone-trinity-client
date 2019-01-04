@@ -3,40 +3,25 @@ import { connect } from "react-redux";
 
 import ProjectTask from './ProjectTask/ProjectTask';
 import { getBacklog } from '../../Redux/actions/backlogActions'
-import {
-  Card, CardBody,
-  CardTitle, Row, Col
-} from 'reactstrap';
+import { Card, CardBody, CardTitle, Row, Col } from 'reactstrap';
 class ProcessBox extends Component {
 
   componentDidMount() {
     this.props.getBacklog(this.props.project_ID)
   }
 
-
-  // renderList() {
-  //   return this.props.backlog.project_tasks.map(task => {
-  //     return (
-  //       <ProjectTask task={task} key={task.id}></ProjectTask>
-  //     );
-  //   });
-  // }
-
-
-
-
   render() {
 
     const tasks = this.props.backlog.project_tasks.map(project_task => (
-      <ProjectTask key={project_task.id} task={project_task} />
+      <ProjectTask key={project_task.id} task={project_task} project_ID={this.props.project_ID} />
     ));
 
-    console.log('task', tasks)
+
     let todoTasks = [];
     let doingTasks = [];
     let doneTasks = [];
     for (let i = 0; i < tasks.length; i++) {
-      if (tasks[i].props.task.status === "TO_DO") {
+      if (tasks[i].props.task.status === "TODO") {
         todoTasks.push(tasks[i]);
       }
 
@@ -56,23 +41,25 @@ class ProcessBox extends Component {
         <Row>
           <Col xs="4">
             <Card>
+              <h2 className="bg-light text-center text-primary">TO DO</h2>
               <CardBody>
-                <CardTitle>TO DO</CardTitle>
-                <div>{todoTasks}</div>
 
+                <div>{todoTasks}</div>
               </CardBody>
             </Card></Col>
           <Col xs="4">
             <Card>
+              <h2 className="bg-light text-center text-primary">WORKING ON</h2>
               <CardBody>
-                <CardTitle>DOING</CardTitle>
+
                 <div>{doingTasks}</div>
               </CardBody>
             </Card></Col>
           <Col xs="4">
             <Card>
+              <h2 className="bg-light text-center text-primary">DONE</h2>
               <CardBody>
-                <CardTitle>DONE</CardTitle>
+
                 <div>{doneTasks}</div>
               </CardBody>
             </Card></Col>

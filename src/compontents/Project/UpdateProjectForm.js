@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
-import { withRouter } from "react-router-dom";
+import { Link } from 'react-router-dom';
+
 import { connect } from 'react-redux';
+import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
 import { createProject, getProject } from "../../Redux/actions/projectActions"
+
 class UpdateProjectForm extends Component {
 
   state = {
@@ -15,25 +17,17 @@ class UpdateProjectForm extends Component {
     updated_At: ""
   }
 
-  componentWillReceiveProps(nextProps) {
-
-    const {
-      id,
-      projectName,
-      projectIdentifier,
-      description,
-      start_date,
-      end_date
-    } = nextProps.project;
-
-    this.setState({
-      id,
-      projectName,
-      projectIdentifier,
-      description,
-      start_date,
-      end_date
-    });
+  componentDidUpdate(prevProps) {
+    if (this.props.project.id !== prevProps.project.id) {
+      this.setState({
+        id: this.props.project.id,
+        projectName: this.props.project.projectName,
+        projectIdentifier: this.props.project.projectIdentifier,
+        description: this.props.project.description,
+        start_date: this.props.project.start_date,
+        end_date: this.props.project.end_date
+      });
+    }
   }
 
   componentDidMount() {
@@ -66,29 +60,14 @@ class UpdateProjectForm extends Component {
     });
   };
 
-
-
-  // componentDidMount() {
-  //   const { id } = this.props.match.params;
-  //   this.props.getProject(id, this.props.history);
-  // }
-
-  // componentWillUpdate() {
-  //   this.props.getProject(this.props.match.params.id)
-  //   console.log('this.props.project', this.props.project)
-  //   this.setState({ ...this.props.project.project });
-  // }
-
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.project && this.state.id !== this.props.project.id) {
-  //     this.setState({ ...this.props.project });
-  //   }
-  // }
-
-
   render() {
-    console.log('this.props', this.props)
-    return (<Container>
+
+    const style = {
+      marginTop: '1.5em'
+
+    }
+    return (<Container style={style}>
+      <Link to={"/dashboard"} className=" btn btn-lg "><i className="fas fa-long-arrow-alt-left"></i>Back </Link>
 
       <Form onSubmit={this.onSubmitHandler}>
         <FormGroup>

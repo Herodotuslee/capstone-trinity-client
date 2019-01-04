@@ -7,8 +7,8 @@ import { withRouter } from "react-router-dom";
 class AddProjectTask extends React.Component {
 
   state = {
-    summary: "",
-    acceptanceCriteria: "",
+    name: "",
+    note: "",
     status: "",
     priority: 0,
     dueDate: "",
@@ -25,11 +25,10 @@ class AddProjectTask extends React.Component {
 
   onSubmitHandler = e => {
     e.preventDefault();
-    console.log('paramas', this.props.match.params)
     this.props.addProjectTask(this.props.match.params.id, this.state).then(() => {
       this.setState({
-        summary: "",
-        acceptanceCriteria: "",
+        name: "",
+        note: "",
         status: "",
         priority: 0,
         dueDate: "",
@@ -43,83 +42,90 @@ class AddProjectTask extends React.Component {
 
 
   render() {
+
+    const style = {
+      marginTop: '3em'
+
+    }
     return (
-      <Container><Form onSubmit={this.onSubmitHandler}>
-        <FormGroup>
-          <Label for="summary">Task Name</Label>
-          <Input
-            type="text"
-            name="summary"
-            id="summary"
-            placeholder="Input the amount"
-            onChange={this.onChangeHandler}
-            value={this.state.summary}
-          />
-        </FormGroup>
+      <Container style={style} >
+        <Form onSubmit={this.onSubmitHandler}>
+          <FormGroup>
+            <Label for="summary">Task Name</Label>
+            <Input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Input the amount"
+              onChange={this.onChangeHandler}
+              value={this.state.name}
+            />
+          </FormGroup>
 
-        <FormGroup>
-          <Label for="acceptanceCriteria">Detail</Label>
-          <Input
-            type="textarea"
-            name="acceptanceCriteria"
-            id="acceptanceCriteria"
-            placeholder="Input the description"
-            onChange={this.onChangeHandler}
-            value={this.state.acceptanceCriteria}
-          />
-        </FormGroup>
+          <FormGroup>
+            <Label for="acceptanceCriteria">Detail</Label>
+            <Input
+              type="textarea"
+              name="note"
+              id="note"
+              placeholder="Input the description"
+              onChange={this.onChangeHandler}
+              value={this.state.note}
+            />
+          </FormGroup>
 
 
-        <FormGroup>
-          <select
-            className="form-control form-control-lg"
-            name="status"
-            value={this.state.status}
-            onChange={this.onChangeHandler}
+          <FormGroup>
+            <select
+              className="form-control form-control-lg"
+              name="status"
+              value={this.state.status}
+              onChange={this.onChangeHandler}
+            >
+              <option value="">Select Status</option>
+              <option value="TO_DO">TO DO</option>
+              <option value="DOING">DOING</option>
+              <option value="DONE">DONE</option>
+            </select>
+          </FormGroup>
+
+          <FormGroup>
+            <select
+              className="form-control form-control-lg"
+              name="priority"
+              value={this.state.priority}
+              onChange={this.onChangeHandler}
+            >
+              <option value={0}>Select Priority</option>
+              <option value={1}>High</option>
+              <option value={2}>Medium</option>
+              <option value={3}>Low</option>
+            </select>
+
+          </FormGroup>
+
+          <FormGroup>
+            <input
+              type="date"
+              className="form-control form-control-lg"
+              name="dueDate"
+              value={this.state.dueDate}
+              onChange={this.onChangeHandler}
+            />
+          </FormGroup>
+
+          <Button
+            type="submit"
+            color="primary"
+            className="margin-left-12"
+            style={{
+              marginRight: `3em`
+            }}
           >
-            <option value="">Select Status</option>
-            <option value="TO_DO">TO DO</option>
-            <option value="DOING">DOING</option>
-            <option value="DONE">DONE</option>
-          </select>
-        </FormGroup>
-
-        <FormGroup>
-          <select
-            className="form-control form-control-lg"
-            name="priority"
-            value={this.state.priority}
-            onChange={this.onChangeHandler}
-          >
-            <option value={0}>Select Priority</option>
-            <option value={1}>High</option>
-            <option value={2}>Medium</option>
-            <option value={3}>Low</option>
-          </select>
-
-        </FormGroup>
-
-        <FormGroup>
-          <input
-            type="date"
-            className="form-control form-control-lg"
-            name="dueDate"
-            value={this.state.dueDate}
-            onChange={this.onChangeHandler}
-          />
-        </FormGroup>
-
-        <Button
-          type="submit"
-          color="primary"
-          className="margin-left-12"
-          style={{
-            marginRight: `3em`
-          }}
-        >
-          ADD
+            ADD
           </Button>
-      </Form></Container>
+        </Form>
+      </Container>
 
     );
   }

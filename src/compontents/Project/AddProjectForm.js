@@ -1,8 +1,10 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
+import { Link, withRouter } from 'react-router-dom';
+
 import { connect } from 'react-redux';
+import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
 import { createProject } from "../../Redux/actions/projectActions"
-import { withRouter } from "react-router-dom";
+
 class AddProjectForm extends React.Component {
 
 
@@ -42,15 +44,21 @@ class AddProjectForm extends React.Component {
 
 
   render() {
+
+    const style = {
+      marginTop: '1.5em'
+
+    }
     return (
-      <Container><Form onSubmit={this.onSubmitHandler}>
+      <Container style={style}><Form onSubmit={this.onSubmitHandler}>
+        <Link to={"/dashboard"} className=" btn btn-lg "><i className="fas fa-long-arrow-alt-left"></i>Back </Link>
         <FormGroup>
           <Label for="projectName">Project Name</Label>
           <Input
             type="text"
             name="projectName"
             id="projectName"
-            placeholder="Input the amount"
+            placeholder="Project Name"
             onChange={this.onChangeHandler}
             value={this.state.projectName}
           />
@@ -69,12 +77,12 @@ class AddProjectForm extends React.Component {
         </FormGroup>
 
         <FormGroup>
-          <Label for=" projectIdentifier"> Project Identifier</Label>
+          <Label for=" projectIdentifier"> Project ID</Label>
           <Input
             type="text"
             name="projectIdentifier"
             id=" projectIdentifier"
-            placeholder="Input the  projectIdentifier"
+            placeholder="Input the projectID"
             onChange={this.onChangeHandler}
             value={this.state.projectIdentifier}
           />
