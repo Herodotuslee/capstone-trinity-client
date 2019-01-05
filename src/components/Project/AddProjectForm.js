@@ -51,7 +51,7 @@ class AddProjectForm extends React.Component {
     }
     return (
       <Container style={style}><Form onSubmit={this.onSubmitHandler}>
-        <Link to={"/dashboard"} className=" btn btn-lg "><i className="fas fa-long-arrow-alt-left"></i>Back </Link>
+        <Link to={"/dashboard"} className=" btn btn-lg "><i className="fas fa-long-arrow-alt-left"></i>Dashboard </Link>
         <FormGroup>
           <Label for="projectName">Project Name</Label>
           <Input

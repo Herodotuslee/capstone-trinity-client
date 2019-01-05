@@ -10,7 +10,10 @@ import {
   DELETE_TASK_SUCCESS,
   DELETE_TASK_FAILED,
   FETCH_ALLPROJECT_TASKS_SUCCESS,
-  FETCH_ALLPROJECT_TASKS_FAILED
+  FETCH_ALLPROJECT_TASKS_FAILED,
+  DELETE_TASK_BYID_SUCCESS,
+  ADD_TASK_SUCCESS_BUTTON,
+  ADD_TASK_FAILED_BUTTON
 } from "./types";
 
 
@@ -32,6 +35,25 @@ export const addProjectTask = (backlog_id, project_task) => dispatch => {
       dispatch({
         type: ADD_TASK_FAILED,
         payload: err.response.data
+      })
+    );
+};
+
+
+export const addProjectTaskButton = (backlog_id, project_task) => dispatch => {
+  return axios
+    .post(`http://localhost:8080/api/backlog/${backlog_id}`, project_task)
+    .then(response => {
+      console.log('response', response.data)
+      dispatch({
+        type: ADD_TASK_SUCCESS_BUTTON,
+        payload: response.data
+      });
+    })
+    .catch(err =>
+      dispatch({
+        type:ADD_TASK_FAILED_BUTTON,
+        payload: err
       })
     );
 };
@@ -61,6 +83,13 @@ export const deleteProjectTask = (backlog_id, pt_id) => dispatch => {
 
 };
 
+export const deleteProjectTaskByID = (pt_id) => dispatch => {
+  axios.delete(`http://localhost:8080/api/backlog/${pt_id}`);
+  dispatch({
+    type: DELETE_TASK_BYID_SUCCESS,
+    payload: pt_id
+  });
+};
 export const getProjectTask = (
   backlog_id,
   pt_id,

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Table, Container } from "reactstrap";
 import { fetchExpense } from "../../Redux/actions/expenseActions";
 import Expense from "./Expense";
+import { Link } from "react-router-dom";
 // import { Button } from "reactstrap";
 // import { Link } from "react-router-dom";
 import moment from "moment";
@@ -35,6 +36,8 @@ class ExpenseAll extends Component {
       console.log('yoyoy2', this.props)
       return (
         <Container>
+          <Link to={"/expenseDashboard"} className=" btn btn-lg "><i className="fas fa-long-arrow-alt-left"></i>Dashboard </Link>
+
           <div className="text-center">
             <h1>LESS IS MORE </h1>
             <h3>One In One out</h3>

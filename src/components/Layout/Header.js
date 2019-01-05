@@ -44,8 +44,7 @@ class Header extends React.Component {
               </DropdownItem>
               <DropdownItem divider />
               <DropdownItem>
-                <Link to="/project/overview" ><i className="fas fa-tachometer-alt">
-                </i> OVERVIEW</Link>
+                <Link to="/project/overview" ><i className="fas fa-database"></i> OVERVIEW</Link>
               </DropdownItem>
 
             </DropdownMenu>

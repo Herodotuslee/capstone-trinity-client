@@ -6,24 +6,24 @@ import { createStore, applyMiddleware } from "redux";
 import logger from "redux-logger";
 import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from 'redux-devtools-extension';
-import UpdateProjectForm from "./compontents/Project/UpdateProjectForm";
+import UpdateProjectForm from "./components/Project/UpdateProjectForm";
 
 
-import ProjectBoard from "./compontents/ProjectBoard/ProjectBoard";
+import ProjectBoard from "./components/ProjectBoard/ProjectBoard";
 import reducers from "./Redux/reducers";
 
-import Header from "./compontents/Layout/Header";
-import Dashboard from "./compontents/Dashboard";
-import AddProjectForm from "./compontents/Project/AddProjectForm";
-import AddProjectTask from "./compontents/ProjectBoard/ProjectTask/AddProjectTask";
-import UpdateProjectTask from "./compontents/ProjectBoard/ProjectTask/UpdateProjectTask";
-import ExpenseAll from "./compontents/Expense/ExpenseAll";
-import AddExpenseForm from "./compontents/Expense/AddExpenseForm";
-import ExpenseDashboard from "./compontents/Expense/ExpenseDashboard";
-import YearChart from "./compontents/Expense/YearChart";
-import MyCalender from "./compontents/MyCalender";
-import Info from "./compontents/Introduction/Info";
-import ProjectOverview from "./compontents/Project/ProjectOverview";
+import Header from "./components/Layout/Header";
+import Dashboard from "./components/Dashboard";
+import AddProjectForm from "./components/Project/AddProjectForm";
+import AddProjectTask from "./components/ProjectBoard/ProjectTask/AddProjectTask";
+import UpdateProjectTask from "./components/ProjectBoard/ProjectTask/UpdateProjectTask";
+import ExpenseAll from "./components/Expense/ExpenseAll";
+import AddExpenseForm from "./components/Expense/AddExpenseForm";
+import ExpenseDashboard from "./components/Expense/ExpenseDashboard";
+import YearChart from "./components/Expense/YearChart";
+import MyCalender from "./components/MyCalender";
+import Info from "./components/Introduction/Info";
+import ProjectOverview from "./components/Project/ProjectOverview";
 
 
 const middleware = [logger, thunkMiddleware];
@@ -53,7 +53,7 @@ class App extends Component {
               <Route exact path="/expense/add" component={AddExpenseForm} />
               <Route exact path="/expense/year" component={YearChart} />
               <Route exact path="/info" component={Info} />
-              {/* <Route exact path="/myCalendar" component={MyCalender} /> */}
+              <Route exact path="/myCalendar" component={MyCalender} />
             </Switch>
           </div>
         </BrowserRouter>

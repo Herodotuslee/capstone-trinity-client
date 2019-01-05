@@ -1,9 +1,12 @@
 import React from 'react';
 import { Table, Container } from 'reactstrap';
 import { connect } from 'react-redux';
+import moment from "moment";
+import { Link } from 'react-router-dom';
 import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
-import { fetchAllProjectTasks } from "../../Redux/actions/backlogActions"
+
+import { fetchAllProjectTasks, deleteProjectTaskByID } from "../../Redux/actions/backlogActions"
 
 class ProjectOverview extends React.Component {
 
@@ -23,65 +26,41 @@ class ProjectOverview extends React.Component {
           <td>{item.note}</td>
           <td>{item.status}</td>
           <td>{item.dueDate}</td>
+
+
+          <td> <i className="fas fa-times" onClick={() => this.props.deleteProjectTaskByID(item.id)} />
+          </td>
         </tr>
+
       );
     });
   }
   render() {
-
-
-
-    // const tasks = this.props.backlog.project_tasks.map(project_task => (
-    //   <ProjectTask key={project_task.id} task={project_task} project_ID={this.props.project_ID} />
-    // ));
-
-
-    // let todoTasks = [];
-    // let doingTasks = [];
-    // let doneTasks = [];
-    // for (let i = 0; i < tasks.length; i++) {
-    //   if (tasks[i].props.task.status === "TODO") {
-    //     todoTasks.push(tasks[i]);
-    //   }
-
-    //   if (tasks[i].props.task.status === "DOING") {
-    //     doingTasks.push(tasks[i]);
-    //   }
-
-    //   if (tasks[i].props.task.status === "DONE") {
-    //     doneTasks.push(tasks[i]);
-    //   }
-    // }
 
     if (!this.props.tasks) {
       return (<div>Loading All tasks</div>)
     } else {
 
       let donetask = this.props.tasks.filter(task => task.status === "DONE")
-      console.log('done', donetask)
+      console.log('done-Task', donetask)
       let doneDate = []
 
       for (let i = 0; i < donetask.length; i++) {
-        // console.log(donetask[i])
         doneDate.push({ "date": donetask[i].dueDate })
       }
-      console.log(doneDate)
       return (
-
         <Container>
-          {/* <p>{doneDate}</p> */}
-
+          <br />
+          <Link to={"/dashboard"} className=" btn btn-lg "><i className="fas fa-long-arrow-alt-left"></i>Dashboard </Link>
+          <br />
           <CalendarHeatmap
-            startDate={new Date('2019-01-01')}
-            endDate={new Date('2019-12-01')}
-            values={[
-              { date: '2019-01-01' },
-              { date: '2019-01-22' },
-              { date: '2019-01-30' }
-
-            ]}
+            startDate={moment(new Date()).subtract(1, 'years')}
+            endDate={new Date(Date.now())}
+            values={doneDate}
           />
-          <p>$</p>
+          <br />
+          <br />
+
           <Table>
             <thead>
               <tr>
@@ -91,6 +70,7 @@ class ProjectOverview extends React.Component {
                 <th>Note </th>
                 <th>Status</th>
                 <th>Due Date</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -113,7 +93,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  fetchAllProjectTasks
+  fetchAllProjectTasks,
+  deleteProjectTaskByID
 }
 
 export default

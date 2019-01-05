@@ -54,8 +54,7 @@ class Add extends Component {
     }
     return (
       <Container style={style}><Form onSubmit={this.handleSubmit}>
-        <Link to={"/dashboard"} className=" btn btn-lg "><i className="fas fa-long-arrow-alt-left"></i>Back </Link>
-
+      
         {/* <TodayChart></TodayChart> */}
         <FormGroup>
           <Label for="cost">Cost</Label>

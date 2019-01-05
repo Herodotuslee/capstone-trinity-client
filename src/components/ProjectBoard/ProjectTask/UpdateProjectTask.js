@@ -8,9 +8,11 @@ import { addProjectTask, getProjectTask } from "../../../Redux/actions/backlogAc
 class UpdateProjectTaskForm extends Component {
 
   state = {
+    id: "",
     name: "",
     note: "",
     status: "",
+    important: "",
     priority: 0,
     dueDate: "",
     projectIdentifier: this.props.match.params.id
@@ -23,7 +25,7 @@ class UpdateProjectTaskForm extends Component {
   // this.props.project_task
 
   componentDidUpdate(prevProps) {
-    if (this.props.project_task.id !== prevProps.project_task.id) {
+    if (this.props.project_task.id !== prevProps.project_task.id || this.state.id !== prevProps.project_task.id) {
       this.setState({
         id: this.props.project_task.id,
         name: this.props.project_task.name,
@@ -37,28 +39,6 @@ class UpdateProjectTaskForm extends Component {
   }
 
 
-  // componentWillReceiveProps(nextProps) {
-
-  //   const {
-  //     summary: "",
-  //     acceptanceCriteria: "",
-  //     status: "",
-  //     priority: 0,
-  //     dueDate: "",
-  //     projectIdentifier: ""
-  //   } = nextProps.project;
-
-  //   this.setState({
-  //     summary: "",
-  //     acceptanceCriteria: "",
-  //     status: "",
-  //     priority: 0,
-  //     dueDate: "",
-  //     projectIdentifier: this.props.match.params.id
-  //   });
-  // }
-
-
 
   onChangeHandler = e => {
     this.setState({
@@ -70,7 +50,6 @@ class UpdateProjectTaskForm extends Component {
 
   onSubmitHandler = e => {
     e.preventDefault();
-    console.log('yoyoy', this.props)
     this.props.addProjectTask(this.props.match.params.backlog_id, this.state).then(() => {
       this.setState({
         name: "",
@@ -78,6 +57,7 @@ class UpdateProjectTaskForm extends Component {
         status: "",
         priority: 0,
         dueDate: "",
+        important: "",
         projectIdentifier: this.props.match.params.id
       })
       this.props.history.push(`/projectBoard/${this.props.match.params.backlog_id}`)
@@ -134,9 +114,23 @@ class UpdateProjectTaskForm extends Component {
                 onChange={this.onChangeHandler}
               >
                 <option value="">Select Status</option>
-                <option value="TO_DO">TO DO</option>
+                <option value="TODO">TO DO</option>
                 <option value="DOING">DOING</option>
                 <option value="DONE">DONE</option>
+              </select>
+            </FormGroup>
+
+            <FormGroup>
+              <select
+                className="form-control form-control-lg"
+                name="important"
+                value={this.state.important}
+                onChange={this.onChangeHandler}
+              >
+                <option value="">Select Important</option>
+                <option value={true}>Important</option>
+                <option value={false}>Not Important</option>
+
               </select>
             </FormGroup>
 

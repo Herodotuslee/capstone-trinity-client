@@ -12,6 +12,7 @@ class AddProjectTask extends React.Component {
     status: "",
     priority: 0,
     dueDate: "",
+    important: false,
     projectIdentifier: this.props.match.params.id
   }
 
@@ -32,6 +33,7 @@ class AddProjectTask extends React.Component {
         status: "",
         priority: 0,
         dueDate: "",
+        important: false,
         projectIdentifier: this.props.match.params.id
       })
       this.props.history.push(`/projectBoard/${this.props.match.params.id}`)
@@ -82,8 +84,8 @@ class AddProjectTask extends React.Component {
               value={this.state.status}
               onChange={this.onChangeHandler}
             >
-              <option value="">Select Status</option>
-              <option value="TO_DO">TO DO</option>
+              <option value="TODO">Select Status</option>
+              <option value="TODO">TO DO</option>
               <option value="DOING">DOING</option>
               <option value="DONE">DONE</option>
             </select>
@@ -101,8 +103,25 @@ class AddProjectTask extends React.Component {
               <option value={2}>Medium</option>
               <option value={3}>Low</option>
             </select>
+          </FormGroup>
+
+
+
+          <FormGroup>
+            <select
+              className="form-control form-control-lg"
+              name="priority"
+              value={this.state.important}
+              onChange={this.onChangeHandler}
+            >
+              <option value={false}>Select Important </option>
+              <option value={true}>Important</option>
+              <option value={false}>Not Important</option>
+            </select>
+
 
           </FormGroup>
+
 
           <FormGroup>
             <input

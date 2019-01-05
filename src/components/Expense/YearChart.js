@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Line } from "react-chartjs-2";
 import { Container, Row } from "reactstrap";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import moment from "moment";
 import MonthChart from "./ MonthChart";
@@ -179,6 +180,8 @@ class YearChart extends Component {
     console.log('hi', this.props)
     return (
       <Container>
+        <Link to={"/expenseDashboard"} className=" btn btn-lg "><i className="fas fa-long-arrow-alt-left"></i>Dashboard </Link>
+        
         <Line
           data={data}
           options={{

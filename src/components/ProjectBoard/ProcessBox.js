@@ -11,7 +11,6 @@ class ProcessBox extends Component {
   }
 
   render() {
-
     const tasks = this.props.backlog.project_tasks.map(project_task => (
       <ProjectTask key={project_task.id} task={project_task} project_ID={this.props.project_ID} />
     ));
@@ -43,7 +42,6 @@ class ProcessBox extends Component {
             <Card>
               <h2 className="bg-light text-center text-primary">TO DO</h2>
               <CardBody>
-
                 <div>{todoTasks}</div>
               </CardBody>
             </Card></Col>

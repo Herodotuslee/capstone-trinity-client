@@ -16,10 +16,20 @@ class Info extends Component {
 
         <Card>
 
-          <CardBody> <CardTitle>Unfamiliar Technologies</CardTitle>
+          <CardBody>
+            <CardTitle> Technologies</CardTitle>
 
 
             <CardImg top width="100%" src="https://i.imgur.com/VObJgcJ.png" alt="Card image cap" />
+
+            <hr />
+
+
+            <img src="https://images-na.ssl-images-amazon.com/images/I/51%2BMNH9ThxL._SX328_BO1,204,203,200_.jpg" className="rounded mx-auto d-block" alt="..."></img>
+
+            <hr />
+
+            <img width="100%" src=" https://upload.wikimedia.org/wikipedia/commons/3/33/7_habits_decision-making_matrix.png" className="rounded mx-auto d-block" alt="..."></img>
 
 
           </CardBody>
