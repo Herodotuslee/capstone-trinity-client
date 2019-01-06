@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import ProjectItem from './Project/ProjectItem';
 import CreateProjectButton from './Project/CreateProjectButton';
 import { connect } from "react-redux";
+import ReactLoading from 'react-loading';
 import { fetchProjects } from "../Redux/actions/projectActions"
 import { Container } from 'reactstrap';
+
 class Dashboard extends Component {
 
   componentWillMount() {
@@ -27,7 +29,7 @@ class Dashboard extends Component {
   render() {
     console.log('this.props', this.props.project.projects)
     if (!this.props.project.projects) {
-      return <div>Loading</div>
+      return <ReactLoading type="balls" color="#fffff" height={667} width={375} />
     } else {
       console.log('props', this.props)
       return (

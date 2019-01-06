@@ -4,11 +4,9 @@ import { connect } from 'react-redux';
 import { deleteProject } from '../../Redux/actions/projectActions';
 import "../ProjectBoard/ProjectTask/color.css"
 import {
-  Button, Card, CardText, CardBody,
+  Card, CardText, CardBody,
   CardTitle, CardSubtitle, Row, Col
 } from 'reactstrap';
-
-// import { deleteExpense } from "../../Redux/actions/projectActions";
 class ProjectItem extends Component {
 
 
@@ -41,8 +39,6 @@ class ProjectItem extends Component {
     )
   }
 }
-// export default ProjectItem 
-
 
 
 const mapDispatchToProps = {

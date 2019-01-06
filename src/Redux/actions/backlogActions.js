@@ -4,7 +4,6 @@ import {
   GET_ERRORS,
   GET_BACKLOG,
   GET_PROJECT_TASK,
-  DELETE_PROJECT_TASK,
   ADD_TASK_SUCCESS,
   ADD_TASK_FAILED,
   DELETE_TASK_SUCCESS,
@@ -15,8 +14,6 @@ import {
   ADD_TASK_SUCCESS_BUTTON,
   ADD_TASK_FAILED_BUTTON
 } from "./types";
-
-
 
 
 
@@ -52,7 +49,7 @@ export const addProjectTaskButton = (backlog_id, project_task) => dispatch => {
     })
     .catch(err =>
       dispatch({
-        type:ADD_TASK_FAILED_BUTTON,
+        type: ADD_TASK_FAILED_BUTTON,
         payload: err
       })
     );

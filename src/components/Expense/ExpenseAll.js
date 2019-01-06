@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { Table, Container } from "reactstrap";
 import { fetchExpense } from "../../Redux/actions/expenseActions";
 import Expense from "./Expense";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
+  ;
 // import { Button } from "reactstrap";
-// import { Link } from "react-router-dom";
-import moment from "moment";
+// import moment from "moment";
 // import { deleteExpense } from "../actions/expense";
 
 
@@ -64,7 +64,9 @@ class ExpenseAll extends Component {
 
 const mapStateToProps = state => (
   {
-    expense: state.expense
+    expense: state.expense.filter(expense => {
+      return expense.category_id === 6;
+    })
   });
 
 const mapDispatchToProps = {

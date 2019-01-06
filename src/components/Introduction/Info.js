@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { Container } from 'reactstrap';
 import {
-  Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button, Row, Col
+  Card, CardImg, CardBody, CardTitle
 } from 'reactstrap';
 class Info extends Component {
   render() {

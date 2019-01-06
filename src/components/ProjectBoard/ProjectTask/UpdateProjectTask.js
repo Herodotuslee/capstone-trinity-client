@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Button, Form, FormGroup, Label, Input, Container, Card } from 'reactstrap';
-import { withRouter } from "react-router-dom";
+import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
+import { withRouter, Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { addProjectTask, getProjectTask } from "../../../Redux/actions/backlogActions"
 
@@ -80,6 +80,7 @@ class UpdateProjectTaskForm extends Component {
       return (
 
         <Container style={style}>
+          <Link to={`projectBoard/${this.props.match.params.id}`} className=" btn btn-lg "><i className="fas fa-long-arrow-alt-left"></i>Dashboard </Link>
           <Form onSubmit={this.onSubmitHandler}>
             <FormGroup>
               <Label for="name">Task Name</Label>
@@ -172,9 +173,6 @@ class UpdateProjectTaskForm extends Component {
           </Form>
         </Container>)
     }
-
-
-    ;
   }
 }
 

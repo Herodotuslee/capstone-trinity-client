@@ -72,16 +72,16 @@ class Header extends React.Component {
 
           <NavItem>
             <NavLink href="/myCalendar" ><i className="far fa-calendar-alt">
-              </i> CALANDER</NavLink>
+            </i> CALANDER</NavLink>
           </NavItem>
           <NavItem>
             <NavLink href="/info" ><i className="far fa-calendar-alt"></i> INFO</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/project/add" > <i className="fas fa-user-plus"> SIGN UP</i></NavLink>
+            <NavLink href="/signin" > <i className="fas fa-user-plus"> SIGN UP</i></NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/project/add" ><i className="fas fa-user"></i> LOGIN</NavLink>
+            <NavLink href="/login" ><i className="fas fa-user"></i> LOGIN</NavLink>
           </NavItem>
 
 

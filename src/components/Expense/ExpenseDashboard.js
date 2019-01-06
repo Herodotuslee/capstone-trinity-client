@@ -11,24 +11,26 @@ import TodayExpense from "./TodayExpense";
 class ExpenseDashboard extends Component {
   render() {
     return (
-      <div>
-        <Container>
-          <Row>
-            <Col>
-              <AddExpenseForm></AddExpenseForm>
-            </Col>
-            <Col>
-              <TodayChart></TodayChart>
-              {/* <Chart legendPosition="bottom" /> */}
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <TodayExpense></TodayExpense>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+
+      <Container>
+        <br />
+        <br />
+        <Row>
+          <Col>
+            <AddExpenseForm></AddExpenseForm>
+          </Col>
+          <Col>
+            <TodayChart></TodayChart>
+            {/* <Chart legendPosition="bottom" /> */}
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <TodayExpense></TodayExpense>
+          </Col>
+        </Row>
+      </Container>
+
     );
   }
 }

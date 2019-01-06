@@ -75,8 +75,8 @@ const mapStateToProps = ({ expense }) => {
   return {
     expense: expense.filter(expense => {
       return (
-        moment(expense.date).utcOffset('+0700').format("YYYY-MM-DD") ===
-        moment(new Date()).format("YYYY-MM-DD")
+        moment(expense.date).utcOffset('-0700').format("YYYY-MM-DD") ===
+        moment(new Date()).utcOffset('-0700').format("YYYY-MM-DD")
       );
     })
   };

@@ -6,9 +6,9 @@ import { createStore, applyMiddleware } from "redux";
 import logger from "redux-logger";
 import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from 'redux-devtools-extension';
+
+
 import UpdateProjectForm from "./components/Project/UpdateProjectForm";
-
-
 import ProjectBoard from "./components/ProjectBoard/ProjectBoard";
 import reducers from "./Redux/reducers";
 
@@ -24,12 +24,13 @@ import YearChart from "./components/Expense/YearChart";
 import MyCalender from "./components/MyCalender";
 import Info from "./components/Introduction/Info";
 import ProjectOverview from "./components/Project/ProjectOverview";
+import Login from "./components/Auth/login";
+import SignIn from "./components/Auth/signin";
 
 
 const middleware = [logger, thunkMiddleware];
 const store = createStore(reducers, composeWithDevTools(
   applyMiddleware(...middleware),
-  // other store enhancers if any
 ));
 
 
@@ -54,6 +55,8 @@ class App extends Component {
               <Route exact path="/expense/year" component={YearChart} />
               <Route exact path="/info" component={Info} />
               <Route exact path="/myCalendar" component={MyCalender} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signin" component={SignIn} />
             </Switch>
           </div>
         </BrowserRouter>

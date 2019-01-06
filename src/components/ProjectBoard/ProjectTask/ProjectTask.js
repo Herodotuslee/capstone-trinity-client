@@ -62,15 +62,13 @@ class ProjectTask extends Component {
       return (<div>Loading tasks</div>)
     } else if (this.props.task && true) {
 
-      let priorityString;
       let priorityClass;
 
       if (this.props.task.important === true && this.props.task.status !== 'DONE') {
         priorityClass = "color-red";
-        priorityString = "HIGH";
       } else if (this.props.task.important === false && this.props.task.status !== 'DONE') {
         priorityClass = "color-green";
-        priorityString = "MEDIUM";
+
       }
 
       const styleDelete = {
@@ -84,7 +82,7 @@ class ProjectTask extends Component {
 
         <div >
           <h3 className={`${priorityClass}`}>{this.props.task.name}</h3>
-          <h4>albert{this.props.task.note}</h4>
+          <h4>{this.props.task.note}</h4>
           {/* <h5 className={`${priorityClass}`}>Priority : {priorityString}</h5> */}
 
           <Row className="justify-content-center d-flex" >

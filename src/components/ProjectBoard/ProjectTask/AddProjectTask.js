@@ -3,7 +3,7 @@ import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
 import { connect } from 'react-redux';
 import { addProjectTask } from "../../../Redux/actions/backlogActions"
 
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 class AddProjectTask extends React.Component {
 
   state = {
@@ -51,6 +51,7 @@ class AddProjectTask extends React.Component {
     }
     return (
       <Container style={style} >
+        <Link to={"/dashboard"} className=" btn btn-lg "><i className="fas fa-long-arrow-alt-left"></i>Dashboard </Link>
         <Form onSubmit={this.onSubmitHandler}>
           <FormGroup>
             <Label for="summary">Task Name</Label>

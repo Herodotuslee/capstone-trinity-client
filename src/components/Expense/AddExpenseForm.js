@@ -2,12 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { Button, Form, FormGroup, Label, Input, Container } from "reactstrap";
-import DatePicker from "react-date-picker";
-import { Link } from "react-router-dom";
 import { addExpense } from "../../Redux/actions/expenseActions";
-// import TodayChart from "./TodayChart";
-// import moment from "moment";
-// import Calendar from "react-calendar";
+
 class Add extends Component {
   state = {
     cost: "",
@@ -44,8 +40,11 @@ class Add extends Component {
     });
   };
 
-  onChange = date => this.setState({ date });
-
+  handleChangeDate = e => {
+    this.setState({
+      date: e.target.value
+    });
+  };
   render() {
 
     const style = {
@@ -54,7 +53,7 @@ class Add extends Component {
     }
     return (
       <Container style={style}><Form onSubmit={this.handleSubmit}>
-      
+
         {/* <TodayChart></TodayChart> */}
         <FormGroup>
           <Label for="cost">Cost</Label>
@@ -97,28 +96,36 @@ class Add extends Component {
             value={this.state.note}
           />
         </FormGroup>
-        <FormGroup
-          style={{
-            display: "flex",
-            justifyContent: "space-between"
-          }}
+        {/* <FormGroup
         >
-          <DatePicker
+          <DatePicker className="btn-lg btn-block"
             id="date"
             onChange={this.onChange}
-            value={this.state.date}
+            value={moment(this.state.date).utcOffset('+0700').format("YYYY-MM-DD")}
           />
-          <Button
-            type="submit"
-            color="primary"
-            className="margin-left-12"
-            style={{
-              marginRight: `3em`
-            }}
-          >
-            ADD
-          </Button>
+
+        </FormGroup> */}
+
+        <FormGroup>
+          <input
+            type="date"
+            className="form-control form-control-lg"
+            name="date"
+            id="date"
+            value={this.state.date}
+            onChange={this.handleChangeDate}
+          />
         </FormGroup>
+        <Button
+          type="submit"
+          color="primary"
+          className="btn-lg btn-block"
+          style={{
+            marginRight: `3em`
+          }}
+        >
+          ADD
+          </Button>
       </Form></Container>
 
     );

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import ProjectTask from './ProjectTask/ProjectTask';
 import { getBacklog } from '../../Redux/actions/backlogActions'
-import { Card, CardBody, CardTitle, Row, Col } from 'reactstrap';
+import { Card, CardBody, Row, Col } from 'reactstrap';
 class ProcessBox extends Component {
 
   componentDidMount() {
