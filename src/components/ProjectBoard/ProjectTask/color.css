@@ -1,15 +1,30 @@
-.color-blue{
-  color:#0000ff
-
+.color-yellow{
+   background-color:yellow;
+    font-size: 5px;
+    border-radius: 20%;
+    padding-left:10em;
+  
 }
 
 .color-red{
 
-  color:#ff0000
+  /* color:#ff0000; */
+    background-color:red;
+    font-size: 5px;
+    border-radius: 20%;
+    padding-left:10em;
 }
 
 .color-green{
-  color:#00ff00
+   background-color:#00ff00;
+      font-size: 5px;
+    border-radius: 20%;
+       padding-right:10em;
+}
+
+.move-left{
+    margin-left: 15em;
+    /* text-align:right; */
 }
 
 .pointer {cursor: pointer;}

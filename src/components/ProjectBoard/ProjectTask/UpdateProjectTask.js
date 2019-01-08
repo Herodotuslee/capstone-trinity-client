@@ -33,6 +33,7 @@ class UpdateProjectTaskForm extends Component {
         status: this.props.project_task.status,
         priority: this.props.project_task.priority,
         dueDate: this.props.project_task.dueDate,
+        important: this.props.project_task.important,
         projectIdentifier: this.props.project_task.projectIdentifier
       });
     }
@@ -60,7 +61,7 @@ class UpdateProjectTaskForm extends Component {
         important: "",
         projectIdentifier: this.props.match.params.id
       })
-      this.props.history.push(`/projectBoard/${this.props.match.params.backlog_id}`)
+      this.props.history.goBack()
 
     });
   };
@@ -80,7 +81,7 @@ class UpdateProjectTaskForm extends Component {
       return (
 
         <Container style={style}>
-          <Link to={`projectBoard/${this.props.match.params.id}`} className=" btn btn-lg "><i className="fas fa-long-arrow-alt-left"></i>Dashboard </Link>
+          <Link to={`../../projectBoard/${this.props.match.params.backlog_id}`} className=" btn btn-lg "><i className="fas fa-long-arrow-alt-left"></i>Dashboard BUG </Link>
           <Form onSubmit={this.onSubmitHandler}>
             <FormGroup>
               <Label for="name">Task Name</Label>
@@ -163,7 +164,7 @@ class UpdateProjectTaskForm extends Component {
             <Button
               type="submit"
               color="primary"
-              className="margin-left-12"
+              className="margin-left-12 btn-lg btn-block"
               style={{
                 marginRight: `3em`
               }}

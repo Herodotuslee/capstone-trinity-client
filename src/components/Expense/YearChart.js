@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Line } from "react-chartjs-2";
-import { Container, Row } from "reactstrap";
+import { Container, Row ,Col} from "reactstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import moment from "moment";
@@ -71,9 +71,8 @@ class YearChart extends Component {
   };
 
   renderList() {
-    console.log('yo', this.d)
     return this.state.ChooseMonth.map(item => {
-      return <MonthChart key={item.id} ChooseMonth={item} />;
+      return <Col sm={{size:4}}><MonthChart ClassName="center" key={item.id} ChooseMonth={item} /></Col>;
     });
   }
 
@@ -177,11 +176,11 @@ class YearChart extends Component {
         }
       ]
     };
-    console.log('hi', this.props)
+  
     return (
       <Container>
         <Link to={"/expenseDashboard"} className=" btn btn-lg "><i className="fas fa-long-arrow-alt-left"></i>Dashboard </Link>
-        
+
         <Line
           data={data}
           options={{

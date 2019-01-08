@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 
 import { Button, Form, FormGroup, Label, Input, Container } from "reactstrap";
 import { addExpense } from "../../Redux/actions/expenseActions";
-
+import moment from "moment"
 class Add extends Component {
   state = {
     cost: "",
     note: "",
     category_id: "1",
-    date: new Date()
+    date: moment(new Date()).utcOffset('-0700').format("YYYY-MM-DD")
   };
   handleChangePay = e => {
     this.setState({

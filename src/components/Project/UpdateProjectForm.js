@@ -129,7 +129,7 @@ class UpdateProjectForm extends Component {
         <Button
           type="submit"
           color="primary"
-          className="margin-left-12"
+          className="margin-left-12 btn-lg btn-block"
           style={{
             marginRight: `3em`
           }}

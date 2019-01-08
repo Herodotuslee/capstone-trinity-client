@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import moment from "moment"
 import { Row, Col } from 'reactstrap';
 import "./color.css"
 import { deleteProjectTask, addProjectTask, addProjectTaskButton } from "../../../Redux/actions/backlogActions"
@@ -57,6 +58,14 @@ class ProjectTask extends Component {
   };
 
 
+  onSubmitHandlerImportant = e => {
+    e.preventDefault()
+    this.props.addProjectTaskButton(this.props.task.projectIdentifier, { ...this.state, important: !this.props.task.important }
+    )
+    // window.location.reload();
+  };
+
+
   render() {
     if (!this.props.task) {
       return (<div>Loading tasks</div>)
@@ -64,26 +73,47 @@ class ProjectTask extends Component {
 
       let priorityClass;
 
-      if (this.props.task.important === true && this.props.task.status !== 'DONE') {
-        priorityClass = "color-red";
-      } else if (this.props.task.important === false && this.props.task.status !== 'DONE') {
-        priorityClass = "color-green";
 
+      if (this.props.task.priority === 1) {
+        priorityClass = "color-red";
+      } else if (this.props.task.priority === 2) {
+        priorityClass = "color-yellow";
+
+      } else if (this.props.task.priority === 3) {
+        priorityClass = "color-green";
       }
+
 
       const styleDelete = {
         color: "#007bff",
         textDecoration: "none",
         backgroundColor: "transparent"
       }
+      const h5style={
+        textAlign:'right',
+         color:'#94989A',
+         fontSize:'1em'
+      }
 
+      
 
       return (
 
         <div >
-          <h3 className={`${priorityClass}`}>{this.props.task.name}</h3>
+          <hr/>
+
+          <div> <span className={`${priorityClass}`} /> {this.props.task.important === true ? (<i className="fas fa-star move-left "  onClick={this.onSubmitHandlerImportant}></i>) : (<i className="far fa-star move-left" onClick={this.onSubmitHandlerImportant}></i>)}</div>
+
+
+
+
+          <h3 >{this.props.task.name}</h3>
           <h4>{this.props.task.note}</h4>
-          {/* <h5 className={`${priorityClass}`}>Priority : {priorityString}</h5> */}
+          <h5 style ={h5style}>{moment(this.props.task.dueDate).fromNow()}</h5>
+   
+
+
+
 
           <Row className="justify-content-center d-flex" >
             <Col>{this.props.task.status === 'DOING' ? (<div><i className="fas fa-arrow-left" style={styleDelete} onClick={this.onSubmitHandlerTODO}></i>  </div>) : (<div></div>)}
@@ -101,7 +131,9 @@ class ProjectTask extends Component {
 
             {this.props.task.status === 'DOING' ? (<div><i className="fas fa-arrow-right" style={styleDelete} onClick={this.onSubmitHandlerDONE}></i>  </div>) : (<div></div>)}
             {this.props.task.status === 'TODO' ? (<i className="fas fa-arrow-right" style={styleDelete} onClick={this.onSubmitHandlerDOING}></i>) : (<div></div>)}
-            <hr />
+
+
+          
             <br /></Row>
 
           <hr />

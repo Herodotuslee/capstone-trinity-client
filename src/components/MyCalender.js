@@ -40,10 +40,27 @@ class MyCalendar extends React.Component {
 
     }
 
-
+// eventStyleGetter=(event, start, end, isSelected)=> {
+//     console.log('event',event);
+//     var backgroundColor = '#' + event.hexColor;
+//     var style = {
+//         backgroundColor: backgroundColor,
+//         borderRadius: '0px',
+//         opacity: 0.8,
+//         color: 'black',
+//         border: '0px',
+//         display: 'block'
+//     };
+//     return {
+//         style: style
+//     };
+// }
 
 
     render() {
+
+
+
 
         const allProjectToCalendar = []
         const projectsArray = this.props.project.projects
@@ -68,6 +85,7 @@ class MyCalendar extends React.Component {
                     startAccessor="start"
                     endAccessor="end"
                     eventPropGetter={(this.eventStyleGetter)}
+                    
 
                 /></Container>)
         }
