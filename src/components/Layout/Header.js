@@ -51,26 +51,38 @@ class Header extends React.Component {
         </Dropdown>
 
         <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+
           <DropdownToggle nav caret>
             <i className="fas fa-yen-sign"></i> EXPENSE
             </DropdownToggle>
           <DropdownMenu>
+
             <DropdownItem>
               <Link to="/expenseDashboard" ><i className="fas fa-tachometer-alt">
-              </i> EXPENSE DASHBOARD</Link>
+              </i> DASHBOARD</Link>
             </DropdownItem>
+
             <DropdownItem divider />
+
+            <DropdownItem>
+
+              <Link to="/expense/year"><i className="fas fa-chart-bar"></i> CHART</Link>
+            </DropdownItem>
+
+
+            <DropdownItem divider />
+
+
             <DropdownItem>
               <Link to="/expenseAll" ><i className="fas fa-table"></i> GROCERIES</Link>
             </DropdownItem>
-            <DropdownItem divider />
-            <DropdownItem>
-              <Link to="/expense/year"><i className="fas fa-chart-bar"></i> CHART</Link>
-            </DropdownItem>
+
+
             <DropdownItem divider />
             <DropdownItem>
               <Link to="/expense/search"><i className="fas fa-search"></i>SEARCH</Link>
             </DropdownItem>
+
           </DropdownMenu>
         </Dropdown>
 
@@ -82,9 +94,8 @@ class Header extends React.Component {
           <NavLink href="/info" ><i className="far fa-calendar-alt"></i> INFO</NavLink>
         </NavItem>
 
-        <NavItem >
-          <NavLink href="/music" > <i className="fas fa-user-plus">Music</i></NavLink>
-        </NavItem>
+
+
         <NavItem >
           <NavLink href="/signin" > <i className="fas fa-user-plus">ACCOUNT</i></NavLink>
         </NavItem>

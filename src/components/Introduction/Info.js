@@ -31,11 +31,17 @@ class Info extends Component {
             <img width="100%" src=" https://upload.wikimedia.org/wikipedia/commons/3/33/7_habits_decision-making_matrix.png" className="rounded mx-auto d-block" alt="..."></img>
 
 
+
           </CardBody>
+
+
+
 
 
         </Card>
 
+
+        <img width="100%" src="https://i.imgur.com/uME96Uf.png" className="rounded mx-auto d-block" alt="..."></img>
 
 
 

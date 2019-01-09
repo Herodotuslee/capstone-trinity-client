@@ -89,28 +89,28 @@ class ProjectTask extends Component {
         textDecoration: "none",
         backgroundColor: "transparent"
       }
-      const h5style={
-        textAlign:'right',
-         color:'#94989A',
-         fontSize:'1em'
+      const h5style = {
+        textAlign: 'right',
+        color: '#94989A',
+        fontSize: '1em'
       }
 
-      
+
 
       return (
 
         <div >
-          <hr/>
+          {/* <hr /> */}
 
-          <div> <span className={`${priorityClass}`} /> {this.props.task.important === true ? (<i className="fas fa-star move-left "  onClick={this.onSubmitHandlerImportant}></i>) : (<i className="far fa-star move-left" onClick={this.onSubmitHandlerImportant}></i>)}</div>
+          <div> <span className={`${priorityClass}`} /> {this.props.task.important === true ? (<i className="fas fa-star move-left " onClick={this.onSubmitHandlerImportant}></i>) : (<i className="far fa-star move-left" onClick={this.onSubmitHandlerImportant}></i>)}</div>
 
 
 
 
           <h3 >{this.props.task.name}</h3>
           <h4>{this.props.task.note}</h4>
-          <h5 style ={h5style}>{moment(this.props.task.dueDate).fromNow()}</h5>
-   
+          <h5 style={h5style}>{moment(this.props.task.dueDate).fromNow()}</h5>
+
 
 
 
@@ -132,11 +132,11 @@ class ProjectTask extends Component {
             {this.props.task.status === 'DOING' ? (<div><i className="fas fa-arrow-right" style={styleDelete} onClick={this.onSubmitHandlerDONE}></i>  </div>) : (<div></div>)}
             {this.props.task.status === 'TODO' ? (<i className="fas fa-arrow-right" style={styleDelete} onClick={this.onSubmitHandlerDOING}></i>) : (<div></div>)}
 
+            <hr></hr>
 
-          
             <br /></Row>
 
-          <hr />
+          {/* <hr /> */}
           <br />
         </div>
 

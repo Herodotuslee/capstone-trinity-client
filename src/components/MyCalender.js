@@ -9,6 +9,9 @@ import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import ReactLoading from 'react-loading';
 import { fetchProjects } from "../Redux/actions/projectActions"
+import { fetchExpense } from "../Redux/actions/expenseActions"
+
+
 const localizer = BigCalendar.momentLocalizer(moment)
 
 const style = {
@@ -16,58 +19,68 @@ const style = {
 }
 
 
-// const eventStyleGetter = (event, start, end, isSelected) => {
-
-//     var backgroundColor = '#' + event.hexColor;
-//     var style = {
-//         backgroundColor: backgroundColor,
-//         borderRadius: '0px',
-//         opacity: 0.8,
-//         color: 'black',
-//         border: '0px',
-//         display: 'block'
-//     };
-//     return {
-//         style: style
-//     };
-// }
-
 
 class MyCalendar extends React.Component {
 
+    eventStyleGetter = (event, start, end, isSelected) => {
+
+        let color
+        if (event.title == 'Rent') {
+            color = '#FFA1B5'
+        } else if (event.title === 'Bill') {
+            color = '#FFE199'
+        } else {
+            color = '#86C7F3'
+        }
+
+        var style = {
+            backgroundColor: color,
+            borderRadius: '0px',
+            opacity: 0.8,
+            color: 'white',
+            border: '0px',
+            display: 'block'
+        };
+
+
+
+        return {
+            style: style
+        };
+    }
+
     componentDidMount() {
         this.props.fetchProjects()
+        this.props.fetchExpense()
 
     }
 
-// eventStyleGetter=(event, start, end, isSelected)=> {
-//     console.log('event',event);
-//     var backgroundColor = '#' + event.hexColor;
-//     var style = {
-//         backgroundColor: backgroundColor,
-//         borderRadius: '0px',
-//         opacity: 0.8,
-//         color: 'black',
-//         border: '0px',
-//         display: 'block'
-//     };
-//     return {
-//         style: style
-//     };
-// }
-
-
     render() {
-
-
-
 
         const allProjectToCalendar = []
         const projectsArray = this.props.project.projects
+        const exensesArray = this.props.expense
+
         for (let i = 0; i < projectsArray.length; i++) {
-            console.log(projectsArray[i])
-            allProjectToCalendar.push({ start: projectsArray[i].start_date, end: projectsArray[i].end_date, title: projectsArray[i].projectName })
+
+            allProjectToCalendar.push({
+                start: moment(projectsArray[i].start_date).utcOffset('+0700').format("YYYY-MM-DD")
+                , end: moment(projectsArray[i].end_date).utcOffset('+0700').format("YYYY-MM-DD")
+                , title: projectsArray[i].projectName
+            })
         }
+        for (let i = 0; i < exensesArray.length; i++) {
+            let category;
+            if (exensesArray[i].category_id === 1) {
+                category = "Rent"
+            }
+            if (exensesArray[i].category_id === 4) {
+                category = "Bill"
+            }
+            allProjectToCalendar.push({ start: exensesArray[i].date, end: exensesArray[i].date, title: category })
+        }
+
+
 
         const myEventsList = allProjectToCalendar
 
@@ -76,6 +89,7 @@ class MyCalendar extends React.Component {
 
 
         } else {
+            console.log("allProjectToCalendar", this.props.expense)
             return (<Container>
                 <br />
                 <Link to={"/dashboard"} className=" btn btn-lg "><i className="fas fa-long-arrow-alt-left"></i>Dashboard </Link>
@@ -85,8 +99,7 @@ class MyCalendar extends React.Component {
                     startAccessor="start"
                     endAccessor="end"
                     eventPropGetter={(this.eventStyleGetter)}
-                    
-
+                    views={['month']}
                 /></Container>)
         }
 
@@ -96,13 +109,18 @@ class MyCalendar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    project: state.project
+    project: state.project,
+    expense: state.expense.filter(expense => {
+        return (expense.category_id === 1 || expense.category_id === 4);
+    })
 });
 
 const mapDispatchToProps = {
 
     fetchProjects
+    , fetchExpense
 }
+
 
 export default
     connect(

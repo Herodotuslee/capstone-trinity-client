@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import moment from "moment";
 import { connect } from "react-redux";
 import { deleteExpense } from "../../Redux/actions/expenseActions";
-// import { Button } from "reactstrap";
 
 
 class Expense extends Component {
@@ -26,10 +25,10 @@ class Expense extends Component {
     if (this.props.item.category_id === 6) {
       category = "Groceries"
     }
-     if (this.props.item.category_id === 7) {
+    if (this.props.item.category_id === 7) {
       category = "Gift"
     }
-      if (this.props.item.category_id === 8) {
+    if (this.props.item.category_id === 8) {
       category = "Other"
     }
     return (

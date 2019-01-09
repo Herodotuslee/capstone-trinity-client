@@ -28,7 +28,6 @@ export default function (state = initialState, action) {
         })
       }
     case DELETE_TASK_SUCCESS:
-      console.log('state', state)
       return {
         ...state,
         project_tasks: state.project_tasks.filter(

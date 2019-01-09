@@ -46,7 +46,8 @@ class ProjectOverview extends React.Component {
       let doneDate = []
 
       for (let i = 0; i < donetask.length; i++) {
-        doneDate.push({ "date": donetask[i].dueDate })
+
+        doneDate.push({ "date": donetask[i].dueDate, 'count': 1 })
       }
       return (
         <Container>

@@ -33,7 +33,6 @@ import Info from "./components/Introduction/Info";
 import Login from "./components/Auth/login";
 import SignIn from "./components/Auth/signin";
 import SearchDatePage from "./components/Expense/SearchDatePage";
-import MediaPlayer from "./components/MediaPlayer";
 
 
 
@@ -70,7 +69,7 @@ class App extends Component {
               <Route exact path="/myCalendar" component={MyCalender} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signin" component={SignIn} />
-              <Route exact path="/music" component={MediaPlayer} />
+
             </Switch>
           </div>
         </BrowserRouter>
