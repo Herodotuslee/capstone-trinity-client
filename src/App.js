@@ -20,7 +20,6 @@ import AddProjectTask from "./components/ProjectBoard/ProjectTask/AddProjectTask
 import UpdateProjectTask from "./components/ProjectBoard/ProjectTask/UpdateProjectTask";
 import ProjectOverview from "./components/Project/ProjectOverview";
 
-import MyCalender from "./components/MyCalender";
 
 import ExpenseDashboard from "./components/Expense/ExpenseDashboard";
 
@@ -33,6 +32,9 @@ import Info from "./components/Introduction/Info";
 import Login from "./components/Auth/login";
 import SignIn from "./components/Auth/signin";
 import SearchDatePage from "./components/Expense/SearchDatePage";
+import Schedule from "./components/Schedule";
+import MyCalendar from "./components/MyCalendar";
+import AllSchedule from "./components/AllSchedule";
 
 
 
@@ -66,7 +68,9 @@ class App extends Component {
               <Route exact path="/expense/year" component={YearChart} />
               <Route exact path="/expense/search" component={SearchDatePage} />
               <Route exact path="/info" component={Info} />
-              <Route exact path="/myCalendar" component={MyCalender} />
+              <Route exact path="/myCalendar" component={MyCalendar} />
+              <Route exact path="/schedule" component={Schedule} />
+              <Route exact path="/schedule/All" component={AllSchedule} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signin" component={SignIn} />
 
